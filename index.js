@@ -7,8 +7,11 @@ const express = require('express'),
 const app = express();
 const port = 3000;
 
-mongoose.connect(config.databaseUrl);
+mongoose.connect(config.databaseUrl, { useNewUrlParser: true });
 mongoose.set('debug', true);
+
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, "ERROR connecting to db"));
 
 app.use(bodyParser.json());
 app.use('/api/tasks', taskRoutes);

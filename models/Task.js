@@ -7,9 +7,7 @@ const Task = new Schema({
   title: String,
   assignee: String,
   description: String,
-  dueDate: Date,
-  createdDate: Date,
   folder: String
 });
 
-module.exports = Task;
+module.exports = mongoose.model('Task', Task);

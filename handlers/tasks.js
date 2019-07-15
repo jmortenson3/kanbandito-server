@@ -2,11 +2,17 @@ const Task = require('../models/Task');
 
 
 exports.getTasks = function(req, res, next) {
+
   return res.status(200).json({"tasks": [{"title": "task1"}, {"title": "task2"}]});
 }
 
 exports.createTask = function(req, res, next) {
-  return res.status(200).json({"message": "task created"});
+  console.log(req.body.task);
+  const task = new Task(req.body.task);
+
+  return task.save().then(function () {
+    res.status(200).json({"message": "task created"});
+  });
 }
 
 exports.updateTask = function(req, res, next) {

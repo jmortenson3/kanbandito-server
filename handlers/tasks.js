@@ -1,5 +1,17 @@
-const Task = require('../models/Task');
+const db = require('../db');
 
+
+exports.getTask = function(req, res, next) {
+  db.query('SELECT * FROM tasks WHERE id = $1', [req.params.id], (err, data) => {
+    if (err) {
+      return next(err);
+    }
+
+    const task = data.rows[0];
+
+    return res.status(200).json({"title": task.title});
+  })
+}
 
 exports.getTasks = function(req, res, next) {
 

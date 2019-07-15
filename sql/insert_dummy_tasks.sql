@@ -1,0 +1,2 @@
+INSERT INTO tasks(title, description, state, assignee, folder, effort_hours, created_date, due_date)
+  VALUES ('Setup Crap Flapper', 'Configure the wires and fuses to allow the Crap Flapper to start up', 'queue', ARRAY ['jmortenson3'], null, 4, null, null);
